@@ -31,11 +31,11 @@ jobs:
         git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci
 
     - name: Generate
       run: |
         node generate.js
         git add .
-        git diff --staged --exit-code || (git commit -m 'ci(changelog): update version' && git push)
+        git diff --staged --quiet || (git commit -m 'ci(changelog): generate timestamp' && git push)
 
